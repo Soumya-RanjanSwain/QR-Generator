@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 export default function Hero({ popular }) {
   const randomkey = Math.floor(Math.random() * 10)
   return (
-    <div className='container mx-auto px-11 mb-8 pt-[90px]'>
+    <div className='container mx-auto px-11 mb-1 pt-[90px]'>
       <div className=" h-[70vh] bg-[#072755] shadow-xl relative">
 
 
