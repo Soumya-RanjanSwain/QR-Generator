@@ -1,7 +1,7 @@
 import { Link, useParams } from "react-router-dom"
 import useFetchData from "../utils/api"
 import { useEffect } from "react"
-import Hero from "./Hero"
+import Hero from "../components/Hero"
 import genres from "../utils/genres"
 import {IoIosArrowBack} from 'react-icons/io'
 

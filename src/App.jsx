@@ -3,9 +3,9 @@ import './App.css'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import useFetchData from './utils/api';
-import Movie_Details from "./components/movie_details";
+import Movie_Details from "./pages/Movie_Details";
 import MovieCategory from "./components/MovieCategory";
-import Category from "./components/Category";
+import Category from "./pages/Category";
 
 function App() {
   const { data: Trending, loading: TrendingLoading } = useFetchData(
