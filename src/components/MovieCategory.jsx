@@ -7,7 +7,6 @@ import romimage from '../assets/Romance.jpg'
 
 export default function MovieCategory() {
     return (
-        <div className="container mx-auto px-11 mb-3">
             <Swiper
                 className=" mt-14"
                 spaceBetween={50}
@@ -181,6 +180,6 @@ export default function MovieCategory() {
                 </SwiperSlide>
 
 
-            </Swiper></div>
+            </Swiper>
     )
 }
