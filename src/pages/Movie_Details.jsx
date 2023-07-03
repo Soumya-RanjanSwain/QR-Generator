@@ -5,7 +5,7 @@ import dayjs from "dayjs";
 import { BsFillPlayFill } from 'react-icons/bs'
 import { AiTwotoneStar } from 'react-icons/ai'
 import Loader from "../components/Loader/Loader";
-
+import { Link } from "react-router-dom";
 
 const minutesToTimeFormat = (totalMinutes) => {
   const hours = Math.floor(totalMinutes / 60);
@@ -30,6 +30,10 @@ const Movie_Details = () => {
   const diretor = data?.credits.crew.filter((d) => d.job === "Director");
   const writers = data?.credits.crew.filter((d) => d.job === "Screenstory" || d.job === "Writer");
   const trailer = data?.videos.results.filter((d) => d.type === "Trailer")
+
+  const { data: Theatres, loading: Theatresloading } = useFetchData(
+    `/movie/${id}/recommendations?language=en-US&page=1`
+  )
 
   return (
     <section className=" min-h-screen text-white ">
@@ -240,7 +244,24 @@ const Movie_Details = () => {
           })}
         </div>
 
+        <h4 className="text-3xl my-7"> Similar</h4>
+        <div className="my-4 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 mb-9 ">
+          {console.log(Theatres?.results)}
+          {Theatres?.results.slice(0, 10).map((movie) => (
 
+            <Link to={`/movie/${movie.id}`} className=" hover:scale-110 transition-all cursor-pointer duration-300 " key={movie.id}>
+              <div className="relative">
+                <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} className=" hover:border-white  hover:border-[5px] transition-all duration-200"></img>
+                <div className=" w-[50px] h-[50px] bg-white absolute bottom-5 font-bold right-5 text-black flex justify-center items-center shadow-2xl rounded-full opacity-80">{movie.vote_average} </div>
+              </div>
+              <div className="mt-3">
+                <p>{movie.title}</p>
+
+                <p className="line-clamp-2 text-gray-500 mt-2">{movie.overview}</p>
+              </div>
+            </Link>
+          ))}
+        </div>
 
       </div>
     </section>
